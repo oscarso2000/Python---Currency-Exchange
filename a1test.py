@@ -20,23 +20,23 @@ def testA():
     
 
 def testB():
-     """
-     Test procedure for Part B
-     """
-     introcs.assert_equals('B C', a1.first_inside_quotes('A "B C" D')
-     introcs.assert_equals('A', a1.first_inside_quotes('"A" "B" C "D"')
-     introcs.assert_equals(' ', a1.first_inside_quotes('" "')
+    """
+    Test procedure for Part B
+    """
+    introcs.assert_equals('B C', a1.first_inside_quotes('A "B C" D')
+    introcs.assert_equals('A', a1.first_inside_quotes('"A" "B" C "D"')
+    introcs.assert_equals(' ', a1.first_inside_quotes('" "')
 def testC():
-     """
-     Test procedure for Part C
-     """
-     pass
+    """
+    Test procedure for Part C
+    """
+    pass
 
 def testD():
-     """
-     Test procedure for Part D
-     """
-     pass
+    """
+    Test procedure for Part D
+    """
+    pass
 
 testA()
 testB()
