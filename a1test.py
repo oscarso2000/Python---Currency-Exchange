@@ -23,9 +23,9 @@ def testB():
     """
     Test procedure for Part B
     """
-    introcs.assert_equals('B C', a1.first_inside_quotes('A "B C" D')
-    introcs.assert_equals('A', a1.first_inside_quotes('"A" "B" C "D"')
-    introcs.assert_equals(' ', a1.first_inside_quotes('" "')
+    introcs.assert_equals('B C', a1.first_inside_quotes('A "B C" D'))
+    introcs.assert_equals('A', a1.first_inside_quotes('"A" "B" C "D"'))
+    introcs.assert_equals(' ', a1.first_inside_quotes('" "'))
 def testC():
     """
     Test procedure for Part C
