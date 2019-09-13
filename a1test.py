@@ -26,12 +26,15 @@ def testB():
     introcs.assert_equals('B C', a1.first_inside_quotes('A "B C" D'))
     introcs.assert_equals('A', a1.first_inside_quotes('"A" "B" C "D"'))
     introcs.assert_equals(' ', a1.first_inside_quotes('" "'))
+    introcs.assert_equals("src", a1.get_src("src"))
+    introcs.assert_equals("dst", a1.get_dst("dst"))
+    introcs.assert_equals("invalid", a1.has_error("error"))
     
 def testC():
     """
     Test procedure for Part C
     """
-    pass
+    
 
 def testD():
     """
