@@ -26,9 +26,11 @@ def testB():
     introcs.assert_equals('B C', a1.first_inside_quotes('A "B C" D'))
     introcs.assert_equals('A', a1.first_inside_quotes('"A" "B" C "D"'))
     introcs.assert_equals(' ', a1.first_inside_quotes('" "'))
-    introcs.assert_equals("src", a1.get_src("src"))
-    introcs.assert_equals("dst", a1.get_dst("dst"))
-    introcs.assert_equals("invalid", a1.has_error("error"))
+    introcs.assert_equals("2 United States Dollars", a1.get_src('{ "src" : "2 United States Dollars", "dst" : "1.727138 Euros", "valid" : true, "error" : "" }'))
+    introcs.assert_equals("1.727138 Euros", a1.get_dst('{ "src" : "2 United States Dollars", "dst" : "1.727138 Euros", "valid" : true, "error" : "" }'))
+    introcs.assert_equals(False, a1.has_error('{ "src" : "2 United States Dollars", "dst" : "1.727138 Euros", "valid" : true, "error" : "" }'))
+    introcs.assert_equals(True, a1.has_error('{ "src" : "", "dst" : "", "valid" : false, "error" : "Source currency code is invalid." }'))
+
     
 def testC():
     """
