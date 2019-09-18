@@ -39,14 +39,12 @@ def testC():
     """
     Test procedure for Part C
     """
-    introcs.assert_equals('{"3.673096 AED","1 USD", "1 USD",True}', a1.currency_response('{ "src" : "<old-amt>", "dst" : "<new-amt>", "valid" : true, "error" : "" }'))
-
-
+    introcs.assert_equals('{"currency_from": "3.673096 United Arab Emirates Dirham", "currency_to": "1 United States Dollars", "amount_from": "1 United States Dolalrs"}', a1.currency_response("3.673096 United Arab Emirates Dirham", "1 United States Dollars", 1.0))
 def testD():
     """
     Test procedure for Part D
     """
-    introcs.assert_equals(True, 
+    introcs.assert_equals(False, a1.is_currency("USD"))
 
 testA()
 testB()
