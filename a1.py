@@ -102,7 +102,7 @@ Returns: True if currency is a valid (3 letter code for a) currency. It returns 
 Parameter currency: the currency code to verify
 Precondition: currency is a string.
 """
-def iscurrency(currency):
+def is_currency(currency):
     if has_error(currency_response(currency, currency, 1.0)):
         return False
     else:
