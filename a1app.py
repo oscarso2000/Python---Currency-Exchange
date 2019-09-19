@@ -4,7 +4,7 @@ User interface for module currency
 When run as a script, this module prompts the user for two currencies and amount.
 It prints out the result of converting the first currency to the second.
 
-Author: Oscar So (ons4)
+Author: Oscar So (ons4), Jee-In Lee (jl3697)
 Date:   September 11, 2019
 """
 
