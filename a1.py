@@ -125,4 +125,4 @@ Parameter amount_from: amount of currency to convert
 Precondition: amount_from is a float
 """
 def exchange(currency_from, currency_to, amount_from):
-    return before_space(get_dst(currency_response(currency_from,currency_to,amount_from)))
+    return float(before_space(get_dst(currency_response(currency_from,currency_to,amount_from))))
