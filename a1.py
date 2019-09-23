@@ -5,7 +5,7 @@ This module provides several string parsing functions to implement a
 simple currency exchange routine using an online currency service. 
 The primary function in this module is exchange.
 
-Author: Oscar So (ons4)
+Author: Oscar So (ons4), Jee-In Lee (jl3697)
 Date:   September 11, 2019
 """
 
@@ -43,45 +43,45 @@ def first_inside_quotes(s):
 
 """
 Returns: The SRC value in the response to a currency query.
-Given a JSON response to a currency query, this returns the string inside double quotes (") immediately following the keyword "src". For example, if the JSON is
-  '{ "src" : "2 United States Dollars", "dst" : "1.727138 Euros", "valid" : true, "error" : "" }'
+Given a JSON response to a currency query, this returns the string inside double quotes (") immediately following the keyword "lhs". For example, if the JSON is
+  '{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }'
 then this function returns '2 United States Dollars' (not '"2 United States Dollars"'). It returns the empty string if the JSON is the result of on invalid query.
 Parameter json: a json string to parse
 Precondition: json is the response to a currency query
 """
-def get_src(js):
+def get_lhs(js):
     y = json.loads(js)
-    return y["src"]
+    return y["lhs"]
 
 """
 Returns: The DST value in the response to a currency query.
-Given a JSON response to a currency query, this returns the string inside double quotes (") immediately following the keyword "dst". For example, if the JSON is
-  '{ "src" : "2 United States Dollars", "dst" : "1.727138 Euros", "valid" : true, "error" : "" }'
+Given a JSON response to a currency query, this returns the string inside double quotes (") immediately following the keyword "rhs". For example, if the JSON is
+  '{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }'
 then this function returns '1.727138 Euros' (not '"1.727138 Euros"'). It returns the empty string if the JSON is the result of on invalid query.
 Parameter json: a json string to parse
 Precondition: json is the response to a currency query
 """
-def get_dst(js):
+def get_rhs(js):
     y = json.loads(js)
-    return y["dst"]
+    return y["rhs"]
 
 """
-Returns: True if the query has an error; False otherwise.
+Returns: True if the query has an err; False otherwise.
 Given a JSON response to a currency query, this returns the opposite of the value following the keyword "valid". For example, if the JSON is
-  '{ "src" : "", "dst" : "", "valid" : false, "error" : "Source currency code is invalid." }'
+  '{ "lhs" : "", "rhs" : "", "valid" : false, "err" : "Source currency code is invalid." }'
 then the query is not valid, so this function returns True (It does NOT return the message 'Source currency code is invalid').
 Parameter json: a json string to parse
 Precondition: json is the response to a currency query
 """
 def has_error(js):
     y = json.loads(js)
-    return "invalid" in y["error"]
+    return "invalid" in y["err"]
 
 #Part C#
 """
 Returns: a JSON string that is a response to a currency query.
 A currency query converts amount_from money in currency currency_from to the currency currency_to. The response should be a string of the form
- '{ "src" : "<old-amt>", "dst" : "<new-amt>", "valid" : true, "error" : "" }'
+ '{ "lhs" : "<old-amt>", "rhs" : "<new-amt>", "valid" : true, "err" : "" }'
 where the values old-amount and new-amount contain the value and name for the original and new currencies. If the query is invalid, both old-amount and new-amount will be empty, while "valid" will be followed by the value false.
 
 Parameter currency_from: the currency on hand (the LHS)
@@ -94,7 +94,7 @@ Parameter amount_from: amount of currency to convert
 Precondition: amount_from is a float
 """
 def currency_response(currency_from, currency_to, amount_from):
-    return introcs.urlread('http://cs1110.cs.cornell.edu/2018fa/a1server.php?from=' + currency_from + '&to=' + currency_to + '&amt=' + str(amount_from))
+    return introcs.urlread('http://cs1110.cs.cornell.edu/2019fa/a1?src=' + currency_from + '&dst=' + currency_to + '&amt=' + str(amount_from))
 
 #Part D#
 """
@@ -125,4 +125,4 @@ Parameter amount_from: amount of currency to convert
 Precondition: amount_from is a float
 """
 def exchange(currency_from, currency_to, amount_from):
-    return before_space(get_dst(currency_response(currency_from,currency_to,amount_from)))
+    return float(before_space(get_rhs(currency_response(currency_from,currency_to,amount_from))))

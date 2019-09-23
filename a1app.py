@@ -4,7 +4,7 @@ User interface for module currency
 When run as a script, this module prompts the user for two currencies and amount.
 It prints out the result of converting the first currency to the second.
 
-Author: Oscar So (ons4)
+Author: Oscar So (ons4), Jee-In Lee (jl3697)
 Date:   September 11, 2019
 """
 
@@ -20,5 +20,5 @@ currency_from = input("3-letter code for original currency: ")
 currency_to = input("3-letter code for the new currency: ")
 amount_from = float(input("Amount of the original currency: "))
 print("You can exchange " + str(amount_from) + " " + currency_from 
-        + " for " + a1.exchange(currency_from, currency_to, amount_from)
+        + " for " + str(a1.exchange(currency_from, currency_to, amount_from))
         + " " + currency_to + ".")
