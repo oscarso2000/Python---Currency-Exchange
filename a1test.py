@@ -15,16 +15,16 @@ def testA():
     Test procedure for Part A
     """
     #test procedure for a1.before_space: the function a1.before_space returns the substring of the string s; up to, but not including the first space. For example, s is "0.863569 Euros". The function a1.before_space returns '0.863569', the first substring of s up to but not including the first space.
-   introcs.assert_equals('0.863569', a1.before_space("0.863569 Euros"))
+    introcs.assert_equals('0.863569', a1.before_space("0.863569 Euros"))
       
    #test procedure for a1.after_space: the function a1.after_space returns the substring of s after the first space. For example, s is "0.863569 Euros". The function a1.after_space returns 'Euros', the substring of s after the first space.
-  introcs.assert_equals('Euros', a1.after_space("0.8663569 Euros"))
+    introcs.assert_equals('Euros', a1.after_space("0.8663569 Euros"))
    
   #test procedure for a1.before_space: the function a1.before_space returns the substring of the string s; up to, but not including the first space. For example, s is "1.012324 HKD". The function a1.before_space returns '1.012324', the first substring of s up to but not including the first space. 
-   introcs.assert_equals('1.012324', a1.before_space("1.012324 HKD"))
+    introcs.assert_equals('1.012324', a1.before_space("1.012324 HKD"))
         
   #test procedure for a1.after_space: the function a1.after_space returns the substring of s after the first space. For example, s is "1.012324 HKD". The function a1.after_space returns 'HKD', the substring of s after the first space.
-  introcs.assert_equals('HKD', a1.after_space("1.012324 HKD"))
+    introcs.assert_equals('HKD', a1.after_space("1.012324 HKD"))
      
 
 def testB():
@@ -37,10 +37,10 @@ def testB():
     introcs.assert_equals(' ', a1.first_inside_quotes('" "'))
    
    #test procedure for a1.get_lhs: a1.get_src returns the string inside double quotes immediately following the keyword "lhs". If JSON is '{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }', the function a1.get_lhs returns '2 United States Dollars' (not '"2 United States Dollars"'). 
-   introcs.assert_equals('2 United States Dollars', a1.get_lhs('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : false, "err" : "" }'))
+    introcs.assert_equals('2 United States Dollars', a1.get_lhs('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : false, "err" : "" }'))
     
     #test procedure for a1.get_rhs: a1.get_rhs returns the string inside double quotes immediately following the keyword "rhs". If JSON is '{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }', the function returns '2 United States Dollars' (not '"2 United States Dollars"').
-   introcs.assert_equals('1.727138 Euros', a1.get_rhs('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }'))
+    introcs.assert_equals('1.727138 Euros', a1.get_rhs('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }'))
     
     #test procedure for a1.has_error: a1.get_src returns True if the query has an error. Since the query is not valid, the function returns True (it does NOT return "Source currency code is invalid").
     introcs.assert_equals(True, a1.has_error( '{ "lhs" : "", "rhs" : "", "valid" : false, "err" : "Source currency code is invalid." }'))
@@ -49,10 +49,10 @@ def testB():
     introcs.assert_equals("2 United States Dollars", a1.get_lhs('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : false, "err" : "" }'))
     
     #test procedure for a1.get_lhs: a1.get_src returns the string inside double quotes immediately following the keyword "lhs". If JSON is '{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }', the function a1.get_lhs returns "2 United States Dollars". 
-    introcs.assert_equals("1.727138 Euros", a1.get_dst('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "error" : "" }'))
+    introcs.assert_equals("1.727138 Euros", a1.get_rhs('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : true, "err" : "" }'))
      
      #test procedure for a1.has_error: a1.has_error returns False since the query does not have an error and is thus "valid".
-    introcs.assert_equals(False, a1.has_error('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : false, "error" : "" }'))
+    introcs.assert_equals(False, a1.has_error('{ "lhs" : "2 United States Dollars", "rhs" : "1.727138 Euros", "valid" : false, "err" : "" }'))
     
     #test procedure for a1.has_error: a1.has_error returns True since the query has an error. The function does NOT return "Source currency code is invalid".
     introcs.assert_equals(True, a1.has_error('{ "lhs" : "", "rhs" : "", "valid" : false, "err" : "Source currency code is invalid." }'))
@@ -90,7 +90,7 @@ def testC():
     introcs.assert_equals('{ "ok":true, "lhs":"2.5 United States Dollars", "rhs":"2.2160175 Euros", "err":"" }', a1.currency_response("USD","EUR",2.5))
    
     #test procedure for a1.currency_response: a1.currency_response returns the response to a currency query. The query converts amount_from money in currency currency_from to the currency currency_to. The query is "valid", with the old amount ("lhs") displaying 100 United States Dollars and the new converted amount ("rhs") 782.455 Hong Kong Dollars.
-   introcs.assert_equals('{ "ok":true, "lhs":"100 United States Dollars", "rhs":"782.455 Hong Kong Dollars", "err":"" }', a1.currency_response("USD","HKD",100))
+    introcs.assert_equals('{ "ok":true, "lhs":"100 United States Dollars", "rhs":"782.455 Hong Kong Dollars", "err":"" }', a1.currency_response("USD","HKD",100))
 
 
 def testD():
